@@ -10,10 +10,10 @@ package ru.job4j.calculate;
 public class Calculate {
 
     /**
-    * Method echoClassCalculate.
-    * @param name Your name.
-    * @return Echo plus your name.
-    */
+     * Method echoClassCalculate.
+     * @param name Your name.
+     * @return Echo plus your name.
+     */
     public String echoClassCalculate(String name) {
         return "Echo, echo, echo : " + name;
     }
@@ -26,7 +26,7 @@ public class Calculate {
     public String echo(String value) {
         return String.format("%s %s %s", value, value, value);
     }
-    
+
     /**
      * Main.
      * @param args - input args for calculate

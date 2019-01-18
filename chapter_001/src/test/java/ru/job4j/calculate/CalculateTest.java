@@ -28,12 +28,12 @@ public class CalculateTest {
     }
 
     /**
-    * Test echo.
-    */
+     * Test echo.
+     */
     @Test
     public void whenTakeNameThenThreeEchoPlusName() {
         String input = "Petr Arsentev";
-        String expect = "Echo, echo, echo : Petr Arsentev"; 
+        String expect = "Echo, echo, echo : Petr Arsentev";
         Calculate calc = new Calculate();
         String result = calc.echoClassCalculate(input);
         assertThat(result, is(expect));
