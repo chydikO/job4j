@@ -3,10 +3,20 @@ package ru.job4j.calculate;
 /**
  * Calculate
  * @author Oleg Chudnovskij (oleg.chudnovskiy@gmail.com)
- *  
+ * @version $Id$
+ * @since 0.1
  */
 
 public class Calculate {
+
+    /**
+    * Method echoClassCalculate.
+    * @param name Your name.
+    * @return Echo plus your name.
+    */
+    public String echoClassCalculate(String name) {
+        return "Echo, echo, echo : " + name;
+    }
 
     /**
      * Method Echo
