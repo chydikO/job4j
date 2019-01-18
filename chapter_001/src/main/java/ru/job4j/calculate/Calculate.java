@@ -19,11 +19,11 @@ public class Calculate {
     }
 
     /**
-     * Method Echo
+     * Method echo
      * @param value - input string for string format
      * @return string with format
      */
-    public String Echo(String value) {
+    public String echo(String value) {
         return String.format("%s %s %s", value, value, value);
     }
     
@@ -33,6 +33,6 @@ public class Calculate {
      */
     public static void main(String[] args) {
         Calculate calculate = new Calculate();
-        System.out.println(calculate.Echo("Hi"));
+        System.out.println(calculate.echo("Hi"));
     }
 }
