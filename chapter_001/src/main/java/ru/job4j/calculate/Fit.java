@@ -1,7 +1,12 @@
 package ru.job4j.calculate;
 /**
+ *
  * Программа расчета идеального веса.
+ * @author Oleg Chudnovskij (oleg.chudnovskiy@gmail.com)
+ * @version $Id$
+ * @since 0.1
  */
+
 public class Fit {
     /**
      * Идеальный вес для мужщины.
