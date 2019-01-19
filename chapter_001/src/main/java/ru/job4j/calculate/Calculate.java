@@ -8,31 +8,57 @@ package ru.job4j.calculate;
  */
 
 public class Calculate {
+    private double result;
 
     /**
-     * Method echoClassCalculate.
-     * @param name Your name.
-     * @return Echo plus your name.
+     * Add
+     * @param first
+     * @param second
      */
-    public String echoClassCalculate(String name) {
-        return "Echo, echo, echo : " + name;
+    public void add(double first, double second) {
+        this.result = first + second;
     }
 
     /**
-     * Method echo
-     * @param value - input string for string format
-     * @return string with format
+     * Subtract
+     * @param first
+     * @param second
      */
-    public String echo(String value) {
-        return String.format("%s %s %s", value, value, value);
+    public void subtract(double first, double second) {
+        this.result = first - second;
     }
 
     /**
-     * Main.
-     * @param args - input args for calculate
+     * Div
+     * @param first
+     * @param second
+     */
+    public void div(double first, double second) {
+        this.result = first / second;
+    }
+
+    /**
+     * Multiple
+     * @param first
+     * @param second
+     */
+    public void multiple(double first, double second) {
+        this.result = first * second;
+    }
+
+    /**
+     * Get Result
+     * @return result
+     */
+    public double getResult() {
+        return this.result;
+    }
+
+    /**
+     * Main
+     * @param args
      */
     public static void main(String[] args) {
-        Calculate calculate = new Calculate();
-        System.out.println(calculate.echo("Hi"));
+
     }
 }

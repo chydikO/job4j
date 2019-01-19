@@ -12,30 +12,51 @@ import static org.junit.Assert.*;
  */
 
 public class CalculateTest {
-
+    /**
+     * Test Add
+     */
     @Test
-    public void whenSetStopInEchoThenReturnThreeStops() {
+    public void whenAddOnePlusOneThenTwo() {
         Calculate calc = new Calculate();
-        String result = calc.echo("stop");
-        assertThat(result, is("stop stop stop"));
-    }
-
-    @Test
-    public void whenSetNullInEchoThenReturnTwoSpaces() {
-        Calculate calc = new Calculate();
-        String result = calc.echo(null);
-        assertThat(result, is("null null null"));
+        calc.add(1D, 1D);
+        double result = calc.getResult();
+        double expected = 2D;
+        assertThat(result, is(expected));
     }
 
     /**
-     * Test echo.
+     * Test Div
      */
     @Test
-    public void whenTakeNameThenThreeEchoPlusName() {
-        String input = "Petr Arsentev";
-        String expect = "Echo, echo, echo : Petr Arsentev";
+    public void whenDiv2On2Then1() {
         Calculate calc = new Calculate();
-        String result = calc.echoClassCalculate(input);
-        assertThat(result, is(expect));
+        calc.div(2D, 2D);
+        double result = calc.getResult();
+        double expected = 1D;
+        assertThat(result, is(expected));
+    }
+
+    /**
+     * Test Multiple
+     */
+    @Test
+    public void whenMultiple2To2Then4() {
+        Calculate calc = new Calculate();
+        calc.multiple( 2D, 2D);
+        double result = calc.getResult();
+        double expected = 4D;
+        assertThat( result, is(expected));
+    }
+
+    /**
+     * Test Subtract
+     */
+    @Test
+    public void when4subtract2Then2() {
+        Calculate calc = new Calculate();
+        calc.subtract( 4D, 2D);
+        double result = calc.getResult();
+        double expected = 2D;
+        assertThat( result, is(expected));
     }
 }
