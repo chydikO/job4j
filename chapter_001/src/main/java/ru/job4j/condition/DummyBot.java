@@ -1,5 +1,11 @@
 package ru.job4j.condition;
 
+/**
+ * @author Oleg Chudnovskij (oleg.chudnovskiy@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
+
 public class DummyBot {
     /**
      * Отвечает на вопросы.

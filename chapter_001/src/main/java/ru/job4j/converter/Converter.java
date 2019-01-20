@@ -1,8 +1,11 @@
 package ru.job4j.converter;
 
 /**
- * Корвертор валюты.
+ * @author Oleg Chudnovskij (oleg.chudnovskiy@gmail.com)
+ * @version $Id$
+ * @since 0.1
  */
+
 public class Converter {
     /**
      * Конвертируем рубли в евро.

@@ -4,6 +4,12 @@ import org.junit.Test;
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
+/**
+ * @author Oleg Chudnovskij (oleg.chudnovskiy@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
+
 public class PointTest {
 
     @Test
