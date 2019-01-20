@@ -11,4 +11,15 @@ public class Max {
     public int max(int i, int i1) {
         return i > i1 ? i : i1;
     }
+
+    /**
+     * Function Max Number
+     * @param first
+     * @param second
+     * @param third
+     * @return Max Number
+     */
+    public int max(int first, int second, int third) {
+        return this.max(this.max(first, second), third);
+    }
 }
