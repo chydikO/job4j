@@ -8,18 +8,15 @@ public class Check {
      * @return true or false
      */
     public boolean mono(boolean[] data) {
-        boolean result = false;
+        boolean result = true;
         boolean tmp = data[0];
 
         for (int i = 1; i < data.length; i++) {
-            if (data[i] == tmp) {
-                result = true;
-            } else {
+            if (data[i] != tmp) {
                 result = false;
                 break;
             }
         }
-
         return result;
     }
 }
