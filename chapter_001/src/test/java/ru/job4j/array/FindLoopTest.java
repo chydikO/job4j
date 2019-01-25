@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 public class FindLoopTest {
 
     @Test
-    public void whenArrayHasLengh5Then0() {
+    public void whenArrayHasLenght5Then0() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {5, 10, 3};
         int value = 5;
@@ -17,7 +17,7 @@ public class FindLoopTest {
     }
 
     @Test
-    public void whenArrayHastAlementThenNotIndex() {
+    public void whenArrayHastAllementThenNotIndex() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {5, 10, 3};
         int value = 255;

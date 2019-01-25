@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 public class FactorialTest {
 
     @Test
-    public void whenCalculateFactorialForFiveThenOneHundreedTwenty() {
+    public void whenCalculateFactorialForFiveThenOneHundredTwenty() {
         //напишите здесь тест, проверяющий, что факториал для числа 5 равен 120.
         Factorial factorial = new Factorial();
         assertThat( factorial.calc(5), is(120));

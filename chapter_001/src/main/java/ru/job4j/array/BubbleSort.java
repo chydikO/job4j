@@ -13,26 +13,17 @@ public class BubbleSort {
     public int[] sort(int[] array) {
 
         int arrayLength = array.length;
-        
+        int tmp;
+
         for(int i=0; i < arrayLength; i++){
             for(int j=1; j < (arrayLength-i); j++){
                 if(array[j-1] > array[j]){
-                    this.swapElementsInArray(array, j);
+                    tmp = array[j-1];
+                    array[j-1]= array[j];
+                    array[j] = tmp;
                 }
             }
         }
         return array;
-    }
-
-    /**
-     * swapElementsInArray
-     * @param inputArray
-     * @param index - number element of array for swap between index and index-1
-     */
-    private void swapElementsInArray( int[] inputArray, int index ) {
-
-        inputArray[index-1] = inputArray[index-1] ^ inputArray[index];
-        inputArray[index] = inputArray[index-1] ^ inputArray[index];
-        inputArray[index-1] = inputArray[index-1] ^ inputArray[index];
     }
 }
