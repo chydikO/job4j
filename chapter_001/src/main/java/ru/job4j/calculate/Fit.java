@@ -7,7 +7,7 @@ package ru.job4j.calculate;
  * @since 0.1
  */
 
-public class Fit {
+class Fit {
     /**
      * Идеальный вес для мужщины.
      * @param height Рост.

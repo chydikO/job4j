@@ -3,11 +3,11 @@ package ru.job4j.array;
 /**
  * Bubble sort class
  */
-public class BubbleSort {
+class BubbleSort {
 
     /**
      * Bubble sort the array
-     * @param array
+     * @param array unsorted array
      * @return sorted Array
      */
     public int[] sort(int[] array) {

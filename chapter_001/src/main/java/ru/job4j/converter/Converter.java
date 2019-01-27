@@ -6,7 +6,7 @@ package ru.job4j.converter;
  * @since 0.1
  */
 
-public class Converter {
+class Converter {
     /**
      * Конвертируем рубли в евро.
      * @param value рубли.

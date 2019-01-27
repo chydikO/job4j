@@ -1,6 +1,6 @@
 package ru.job4j.array;
 
-public class MatrixCheck {
+class MatrixCheck {
 
     /**
      *  Check array

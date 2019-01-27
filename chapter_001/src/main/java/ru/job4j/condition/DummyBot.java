@@ -6,7 +6,7 @@ package ru.job4j.condition;
  * @since 0.1
  */
 
-public class DummyBot {
+class DummyBot {
     /**
      * Отвечает на вопросы.
      * @author Oleg Chudnovskij (oleg.chudnovskiy@gmail.com)

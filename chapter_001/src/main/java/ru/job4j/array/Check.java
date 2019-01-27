@@ -1,6 +1,6 @@
 package ru.job4j.array;
 
-public class Check {
+class Check {
 
     /**
      * mom array check

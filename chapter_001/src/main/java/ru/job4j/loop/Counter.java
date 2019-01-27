@@ -6,7 +6,7 @@ package ru.job4j.loop;
  * @since 0.1
  */
 
-public class Counter {
+class Counter {
 
     public int add(int start, int finish) {
         int result = 0;

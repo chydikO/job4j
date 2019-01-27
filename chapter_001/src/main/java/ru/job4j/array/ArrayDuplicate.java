@@ -2,16 +2,16 @@ package ru.job4j.array;
 
 import java.util.Arrays;
 
-public class ArrayDuplicate {
+class ArrayDuplicate {
 
     /**
      * remove Duplicate from Array Of Strings
      * @param array - input array
-     * @return
+     * @return new array without duplicate
      */
     public String[] remove(String[] array) {
 
-        String tmp = null;
+        String tmp;
         int newSizeArray = array.length;
 
         for (int i = 0; i < newSizeArray; i++) {

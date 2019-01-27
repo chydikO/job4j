@@ -6,7 +6,7 @@ package ru.job4j.max;
  * @since 0.1
  */
 
-public class Max {
+class Max {
 
     /**
      * Function Max Number
@@ -20,9 +20,9 @@ public class Max {
 
     /**
      * Function Max Number
-     * @param first
-     * @param second
-     * @param third
+     * @param first number
+     * @param second number
+     * @param third number
      * @return Max Number
      */
     public int max(int first, int second, int third) {

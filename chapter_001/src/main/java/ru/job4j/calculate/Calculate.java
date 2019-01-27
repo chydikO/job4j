@@ -12,8 +12,8 @@ public class Calculate {
 
     /**
      * Add
-     * @param first
-     * @param second
+     * @param first number
+     * @param second number
      */
     public void add(double first, double second) {
         this.result = first + second;
@@ -21,8 +21,8 @@ public class Calculate {
 
     /**
      * Subtract
-     * @param first
-     * @param second
+     * @param first number
+     * @param second number
      */
     public void subtract(double first, double second) {
         this.result = first - second;
@@ -30,8 +30,8 @@ public class Calculate {
 
     /**
      * Div
-     * @param first
-     * @param second
+     * @param first number
+     * @param second number
      */
     public void div(double first, double second) {
         this.result = first / second;
@@ -39,8 +39,8 @@ public class Calculate {
 
     /**
      * Multiple
-     * @param first
-     * @param second
+     * @param first number
+     * @param second number
      */
     public void multiple(double first, double second) {
         this.result = first * second;
@@ -48,7 +48,7 @@ public class Calculate {
 
     /**
      * Get Result
-     * @return result
+     * @return result calculate after operation
      */
     public double getResult() {
         return this.result;
@@ -56,9 +56,11 @@ public class Calculate {
 
     /**
      * Main
-     * @param args
+     * @param args input arguments
      */
     public static void main(String[] args) {
-
+        Calculate calculate = new Calculate();
+        calculate.add( 10d, 15d);
+        System.out.println(calculate.result);
     }
 }

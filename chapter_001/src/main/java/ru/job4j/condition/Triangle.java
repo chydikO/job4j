@@ -6,10 +6,10 @@ package ru.job4j.condition;
  * @since 0.1
  */
 
-public class Triangle {
-    private Point a;
-    private Point b;
-    private Point c;
+class Triangle {
+    private final Point a;
+    private final Point b;
+    private final Point c;
 
     public Triangle(Point a, Point b, Point c) {
         this.a = a;
@@ -46,9 +46,7 @@ public class Triangle {
         double p = this.period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
             // написать формулу для расчета площади треугольника.
-            rsl = Math.sqrt(p * (Double.valueOf(p) - Double.valueOf(ab))
-                    * (Double.valueOf(p) - Double.valueOf(ac))
-                    * (Double.valueOf(p) - Double.valueOf(bc))); //вместо многоточия нужно написать формулу Герона с подставленными переменные ab, ac, dc, p.
+            rsl = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc)); //вместо многоточия нужно написать формулу Герона с подставленными переменные ab, ac, dc, p.
             // Для извлечение квадратного корня надо использовать метод Math.sqrt()
         }
         return rsl;
@@ -62,7 +60,7 @@ public class Triangle {
      * @param ab Длина от точки a b.
      * @param ac Длина от точки a c.
      * @param bc Длина от точки b c.
-     * @return
+     * @return triangle exist
      */
     private boolean exist(double ab, double ac, double bc) {
         return (ab < ac + bc)&& (bc < ab + ac) && (ac < ab + bc);
