@@ -37,12 +37,12 @@ public class Logic {
         return rst;
     }
 
-    public boolean isFree(Cell ... cells) {
+    public boolean isFree(Cell... cells) {
         boolean result = cells.length > 0;
         for (Cell cell : cells) {
             if (this.findBy(cell) != -1) {
-               result = false;
-               break;
+                result = false;
+                break;
             }
         }
         return result;
@@ -68,11 +68,50 @@ public class Logic {
 
     public boolean isWin() {
         int[][] table = this.convert();
-        boolean result = false;
-        return result;
+        int size = table.length;
+
+        return (isHorizontalWin(table) ^ isVerticalWin(table));
     }
 
-    public int[][] convert() {
+    private boolean isHorizontalWin(int[][] table) {
+        boolean bHorizontalWin = false;
+        int counter = 0;
+
+        outerLoop:
+        for (int i = 0; i < size; i++) {
+            bHorizontalWin = true;
+            for (int j = 0; j < size - 1; j++) {
+                bHorizontalWin &= (table[i][j] == table[i][j + 1]) && (table[i][j] == 1);
+                if (bHorizontalWin) {
+                    if(++counter == size - 1) {
+                        break outerLoop;
+                    }
+                }
+            }
+        }
+        return bHorizontalWin;
+    }
+
+    private boolean isVerticalWin (int[][] table) {
+        boolean bVerticalWin = false;
+        int counter = 0;
+
+        outerLoop:
+        for (int i = 0; i < size; i++) {
+            bVerticalWin = true;
+            for (int j = 0; j < size - 1; j++) {
+                bVerticalWin &= (table[j][i] == table[j + 1][i]) && (table[j][i] == 1);
+                if (bVerticalWin) {
+                    if(++counter == size - 1) {
+                        break outerLoop;
+                    }
+                }
+            }
+        }
+        return bVerticalWin;
+    }
+
+    public int[][] convert () {
         int[][] table = new int[this.size][this.size];
         for (int row = 0; row != table.length; row++) {
             for (int cell = 0; cell != table.length; cell++) {
