@@ -70,45 +70,22 @@ public class Logic {
         int[][] table = this.convert();
         int size = table.length;
 
-        return (isHorizontalWin(table) ^ isVerticalWin(table));
-    }
-
-    private boolean isHorizontalWin(int[][] table) {
         boolean bHorizontalWin = false;
-        int counter = 0;
+        boolean bVerticalWin = false;
 
-        outerLoop:
         for (int i = 0; i < size; i++) {
             bHorizontalWin = true;
-            for (int j = 0; j < size - 1; j++) {
-                bHorizontalWin &= (table[i][j] == table[i][j + 1]) && (table[i][j] == 1);
-                if (bHorizontalWin) {
-                    if(++counter == size - 1) {
-                        break outerLoop;
-                    }
-                }
-            }
-        }
-        return bHorizontalWin;
-    }
-
-    private boolean isVerticalWin (int[][] table) {
-        boolean bVerticalWin = false;
-        int counter = 0;
-
-        outerLoop:
-        for (int i = 0; i < size; i++) {
             bVerticalWin = true;
-            for (int j = 0; j < size - 1; j++) {
-                bVerticalWin &= (table[j][i] == table[j + 1][i]) && (table[j][i] == 1);
-                if (bVerticalWin) {
-                    if(++counter == size - 1) {
-                        break outerLoop;
-                    }
-                }
+
+            for (int j = 0; j < size; j++) {
+                bHorizontalWin &= table[i][j] == 1;
+                bVerticalWin &= table[j][i] == 1;
+            }
+            if (bHorizontalWin ^ bVerticalWin) {
+                return true;
             }
         }
-        return bVerticalWin;
+        return false;
     }
 
     public int[][] convert () {
