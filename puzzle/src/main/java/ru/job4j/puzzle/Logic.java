@@ -69,6 +69,7 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         int size = table.length;
+        boolean result = false;
 
         boolean bHorizontalWin = false;
         boolean bVerticalWin = false;
@@ -81,11 +82,11 @@ public class Logic {
                 bHorizontalWin &= table[i][j] == 1;
                 bVerticalWin &= table[j][i] == 1;
             }
-            if (bHorizontalWin ^ bVerticalWin) {
-                return true;
+            if (bHorizontalWin || bVerticalWin) {
+                result = true;
             }
         }
-        return false;
+        return result;
     }
 
     public int[][] convert () {
