@@ -84,6 +84,7 @@ public class Logic {
             }
             if (bHorizontalWin || bVerticalWin) {
                 result = true;
+                break;
             }
         }
         return result;
