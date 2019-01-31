@@ -44,11 +44,11 @@ public class Puzzle extends Application {
         rect.setWidth(size);
         Image img = new Image(this.getClass().getClassLoader().getResource(image).toString());
         rect.setFill(new ImagePattern(img));
-        final Rectangle momento = new Rectangle(x, y);
+        final Rectangle moment = new Rectangle(x, y);
         rect.setOnDragDetected(
                 event -> {
-                    momento.setX(event.getX());
-                    momento.setY(event.getY());
+                    moment.setX(event.getX());
+                    moment.setY(event.getY());
                 }
         );
         rect.setOnMouseDragged(
@@ -59,13 +59,13 @@ public class Puzzle extends Application {
         );
         rect.setOnMouseReleased(
                 event -> {
-                    if (logic.move(this.extract(momento.getX(), momento.getY()), this.extract(event.getX(), event.getY()))) {
+                    if (logic.move(this.extract(moment.getX(), moment.getY()), this.extract(event.getX(), event.getY()))) {
                         rect.setX(((int) event.getX() / 40) * 40 + 5);
                         rect.setY(((int) event.getY() / 40) * 40 + 5);
                         checkWinner();
                     } else {
-                        rect.setX(((int) momento.getX() / 40) * 40 + 5);
-                        rect.setY(((int) momento.getY() / 40) * 40 + 5);
+                        rect.setX(((int) moment.getX() / 40) * 40 + 5);
+                        rect.setY(((int) moment.getY() / 40) * 40 + 5);
                     }
                 }
         );
@@ -123,7 +123,7 @@ public class Puzzle extends Application {
         this.generate(false, 5, grid);
     }
 
-    public void generate(boolean block, int total,  Group grid) {
+    private void generate(boolean block, int total, Group grid) {
         int count = total;
         final Random random = new Random();
         while (count > 0) {
@@ -139,7 +139,7 @@ public class Puzzle extends Application {
         }
     }
 
-    public void add(Figure figure, Group grid) {
+    private void add(Figure figure, Group grid) {
         this.logic.add(figure);
         Cell position = figure.position();
         grid.getChildren().add(

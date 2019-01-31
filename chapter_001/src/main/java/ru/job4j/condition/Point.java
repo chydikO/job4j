@@ -7,7 +7,7 @@ package ru.job4j.condition;
  * @since 0.1
  */
 
-public class Point {
+class Point {
     private final int x;
     private final int y;
 

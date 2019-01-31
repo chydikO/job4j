@@ -10,7 +10,7 @@ import ru.job4j.puzzle.firuges.Figure;
  * @version $Id$
  * @since 0.1
  */
-public class Logic {
+class Logic {
     private final int size;
     private final Figure[] figures;
     private int index = 0;
@@ -90,7 +90,7 @@ public class Logic {
         return result;
     }
 
-    public int[][] convert () {
+    int[][] convert() {
         int[][] table = new int[this.size][this.size];
         for (int row = 0; row != table.length; row++) {
             for (int cell = 0; cell != table.length; cell++) {
