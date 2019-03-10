@@ -1,9 +1,22 @@
 package ru.job4j;
 
 public class Doctor extends Profession{
-    Patient patient;
+    private Patient patient;
 
-    public String diagnoseOfPAtient(Patient patient) {
-        return patient.diagnose;
+    public Doctor(String name, String profession, Patient patient) {
+        super(name, profession);
+        this.patient = patient;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public String diagnoseOfPatient(Patient patient) {
+        return "Diagnose of patient " + patient.getDiagnose();
     }
 }

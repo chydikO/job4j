@@ -48,4 +48,12 @@ public class Profession {
     public String getProfession() {
         return this.profession;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
 }
