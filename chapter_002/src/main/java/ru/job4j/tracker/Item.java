@@ -6,11 +6,20 @@ public class Item {
      * description - описание
      * create - создана
      */
-    protected String id;
+    private String id;
     protected String name;
     protected String description;
     protected long create;
-    protected String[] comments;
+    protected String comments;
+
+    public Item() {
+    }
+
+    public  Item(String name, String desc, long created) {
+        this.name = name;
+        this.description = desc;
+        this.create = created;
+    }
 
     public String getId() {
         return this.id;
@@ -44,20 +53,13 @@ public class Item {
         this.create = create;
     }
 
-    public String[] getComments() {
+    public String getComments() {
         return this.comments;
     }
 
-    public void setComments(String[] comments) {
+    public void setComments(String comments) {
         this.comments = comments;
     }
 
-    public Item() {
-        }
 
-    public  Item(String name, String desc, long created) {
-        this.name = name;
-        this.description = desc;
-        this.create = created;
-    }
 }
