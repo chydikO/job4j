@@ -1,4 +1,13 @@
 package ru.job4j.tracker;
+/**
+ *
+ * добавление заявок - public Item add(Item item);
+ * редактирование заявок - public boolean replace(String id, Item item);
+ * удаление заявок - public boolean delete(String id);
+ * получение списка всех заявок - public Item[] findAll();
+ * получение списка по имени - public Item[] findByName(String key);
+ * получение заявки по id - public Item findById(String id);
+ */
 
 import java.util.Random;
 
@@ -54,12 +63,25 @@ public class Tracker {
     }
 
     /**
-     * редактирование заявок
+     * редактирование заявок, Метод public boolean replace(String id, Item item) должен заменить ячейку
+     * в массиве this.items. Для этого необходимо найти ячейку в массиве по id.
+     * Метод должен вернуть boolean результат - удалось ли провести операцию.
      * @param id
      * @param item
      * @return
      */
     public boolean replace(String id, Item item) {
-        return false;//надо написать
+        boolean result = false;
+        Item tmpItem;
+        if ((tmpItem = this.findById(id)) != null) {
+            for (int i = 0; i < this.items.length; i++ ) {
+                if (this.items[i].equals(tmpItem)) {
+                    this.items[i] = item;
+                    result = true;
+                    break;
+                }
+            }
+        }
+        return result;//надо написать
     }
 }

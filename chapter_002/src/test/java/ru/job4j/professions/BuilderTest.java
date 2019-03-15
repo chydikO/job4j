@@ -2,13 +2,11 @@ package ru.job4j.professions;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class BilderTest {
+public class BuilderTest {
 
     @Test
     public void name() {
-        Bilder b = new Bilder();
+        Builder b = new Builder();
         b.bild();
 
     }
