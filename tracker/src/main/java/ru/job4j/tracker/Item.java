@@ -8,6 +8,10 @@ public class Item {
     private String decs;
     private long time;
 
+    public Item() {
+
+    }
+
     public Item(String name, String decs, long time) {
         this.name = name;
         this.decs = decs;
@@ -60,5 +64,11 @@ public class Item {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, decs, time);
+    }
+
+    @Override
+    public String toString() {
+        return ("Item id- " + this.getId() + " Name- " + this.getName() + " Desc- " + this.getDecs()
+                                                + " time- " + this.time + " HASH: " + this.hashCode());
     }
 }
