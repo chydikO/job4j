@@ -79,7 +79,9 @@ public class Tracker {
         for (int i = 0; i < this.position; i++) {
             if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 this.items[i] = item;
+                item.setId(id);
                 result = true;
+                break;
             }
         }
         return result;//надо написать
@@ -93,14 +95,17 @@ public class Tracker {
      * @param id
      * @return
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         for (int i = 0; i < this.position; i++) {
             if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 System.arraycopy(this.items, i + 1, this.items, i, this.position - i);
                 this.position--;
+                result = true;
                 break;
             }
         }
+        return result;
     }
 
     /**
@@ -120,16 +125,14 @@ public class Tracker {
      */
     public Item[] findByName(String key) {
         Item[] tempArr = new Item[this.position];
-        int indexResultArr = 0;
+        int index = 0;
         for (int i = 0; i != this.position; i++) {
             if (this.items[i] != null && key.equals(this.items[i].getName())) {
-                tempArr[indexResultArr] = this.items[i];
-                indexResultArr++;
+                tempArr[index] = this.items[i];
+                index++;
             }
         }
-        Item[] resultArrByKey = new Item[indexResultArr];
-        System.arraycopy(tempArr, 0, resultArrByKey, 0, indexResultArr);
-        return resultArrByKey;
+        return Arrays.copyOf(tempArr, index);
     }
 
     /**
