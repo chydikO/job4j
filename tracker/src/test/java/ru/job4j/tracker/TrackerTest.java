@@ -79,13 +79,9 @@ public class TrackerTest {
         Item itemRecord3 = new Item("itemRecord3","testItemRecord#3#Description",1789L);
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(itemRecord0);
-        tracker.add(itemRecordNull);
         tracker.add(itemRecord1);
-        tracker.add(itemRecordNull);
         tracker.add(itemRecord2);
-        tracker.add(itemRecordNull);
         tracker.add(itemRecord3);
-        tracker.add(itemRecordNull);
         Item[] result = tracker.findAll();
 
         Item[] matcher = {

@@ -10,6 +10,7 @@ package ru.job4j.tracker;
  */
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Tracker {
@@ -92,36 +93,14 @@ public class Tracker {
      * @param id
      * @return
      */
-    public boolean delete(String id) {
-        boolean result = false;
-
+    public void delete(String id) {
         for (int i = 0; i < this.position; i++) {
-            if (this.items[i] != null && id.equals(this.items[i].getId())) {
-                //если нашли запись по id для удалениея - удалили запись, сдвинули массив
-                this.items[i] = null;
-                swapElementsAfterDel(i);
-                result = true;
+            if (this.items[i] != null && this.items[i].getId().equals(id)) {
+                System.arraycopy(this.items, i + 1, this.items, i, this.position - i);
+                this.position--;
                 break;
             }
         }
-        return result;
-    }
-
-    /**
-     * сдвиг массива влево,смещает все значения справа от
-     * удаляемого элемента - на одну ячейку влево
-     * @param positionOfDel - позиция удаления элемента
-     */
-    private void swapElementsAfterDel(int positionOfDel) {
-        Item tmpItems;
-
-            for (int i = positionOfDel; i < this.position; i++) {
-                tmpItems = this.items[i];
-                this.items[i] = this.items[i+1];
-                this.items[i+1] = tmpItems;
-            }
-            position--;
-            System.arraycopy(items, 0, items, 0, position);
     }
 
     /**
@@ -129,13 +108,7 @@ public class Tracker {
      * @return
      */
     public Item[] findAll() {
-        ArrayList<Item> arrayList = new ArrayList<>();
-        for(Item item: this.items) {
-            if (item != null && item.getName() != null) {
-                arrayList.add(item);
-            }
-        }
-        return arrayList.toArray(new Item[0]);
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -146,13 +119,17 @@ public class Tracker {
      * @return
      */
     public Item[] findByName(String key) {
-        ArrayList<Item> arrayList = new ArrayList<>();
-        for (Item item : this.items) {
-            if (item != null && key.equals(item.getName())) {
-                arrayList.add(item);
+        Item[] tempArr = new Item[this.position];
+        int indexResultArr = 0;
+        for (int i = 0; i != this.position; i++) {
+            if (this.items[i] != null && key.equals(this.items[i].getName())) {
+                tempArr[indexResultArr] = this.items[i];
+                indexResultArr++;
             }
         }
-        return arrayList.toArray(new Item[0]);
+        Item[] resultArrByKey = new Item[indexResultArr];
+        System.arraycopy(tempArr, 0, resultArrByKey, 0, indexResultArr);
+        return resultArrByKey;
     }
 
     /**
