@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -72,7 +71,6 @@ public class TrackerTest {
     @Test
     public void whenFindAllRecordThenArrayOfItems() {
         Tracker tracker = new Tracker();
-        Item itemRecordNull = new Item();
         Item itemRecord0 = new Item("test1","testDescription",123L);
         Item itemRecord1 = new Item("itemRecord1","testItemRecord#1#Description",456L);
         Item itemRecord2 = new Item("itemRecord2","testItemRecord#2#Description",789L);

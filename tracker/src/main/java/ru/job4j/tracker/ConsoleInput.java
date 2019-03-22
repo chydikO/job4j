@@ -1,35 +1,17 @@
 package ru.job4j.tracker;
 
-public class ConsoleInput {
+import java.util.Scanner;
 
-    public enum MenuItem {
-        ADD("Add new Item"),
-        SHOW("Show all items"),
-        EDIT("Edit item"),
-        DELETE("Delete item"),
-        FINDBYID("Find item by Id"),
-        FINDBYNAME("Find items by name"),
-        EXITPRG("Exit Program")
-        ;
+public class ConsoleInput implements Input {
+    private Scanner scanner = new Scanner(System.in);
 
-        private final String text;
+    public ConsoleInput() {
 
-        /**
-         * @param text
-         */
-        MenuItem(final String text) {
-            this.text = text;
-        }
-
-        /* (non-Javadoc)
-         * @see java.lang.Enum#toString()
-         */
-        @Override
-        public String toString() {
-            return text;
-        }
     }
 
-    String asas = MenuItem.FINDBYID.toString();
-    MenuItem menu = MenuItem.EDIT;
+    @Override
+    public String ask(String s) {
+        System.out.println(s); //печатаем вопрос у пользователя
+        return scanner.nextLine();
+    }
 }
