@@ -2,6 +2,10 @@ package ru.job4j.tracker;
 
 import java.util.Scanner;
 
+/**
+ * Класс ConsoleInput используется для ввода пользовательских данных из консоли;
+ */
+
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
