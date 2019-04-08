@@ -105,21 +105,26 @@ public class StartUI {
     private void show() {
         System.out.println("------------ Актуальные заявки --------------");
         Item items[] = tracker.findAll();
-        for(Item item: items) {
-            System.out.println(item);
-        }
+        showItems(items);
     }
+
+
 
     /**
      * Метод реализует редактирование заявки в хранилище.
      */
     private void editItem() {
+        //TODO необходимо найти заявку по имени или id, показать ее, если это она, редактировать - добавить новую,
+        // текущюю удалить. А если заявок с именем много, какую редактировать?
         System.out.println("------------ Редактирование заявки --------------");
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите описание заявки :");
-        Item item = new Item(name, desc);
-        this.tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
+        String id = this.input.ask("Введите ID заявки :");
+        String desc = this.input.ask("Введите новое описание заявки :");
+        Item item = new Item(id, desc);
+        if(this.tracker.replace( id, item)) {
+            System.out.println("------------ заявка с ID : " + item.getId() + " отредактирована -----------");
+        } else {
+            System.out.println("------------ заявка с ID : " + item.getId() + " не отредактирована -----------");
+        }
     }
 
     /**
@@ -141,11 +146,13 @@ public class StartUI {
      */
     private void findID() {
         System.out.println("------------ Поиск заявки из хранилища по ID --------------");
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите описание заявки :");
-        Item item = new Item(name, desc);
-        this.tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
+        String id = this.input.ask("Введите ID заявки :");
+        Item result = this.tracker.findById(id);
+        if (result != null) {
+            System.out.println("------------ Заявка с Id : " + result.getId() + " найдена " + "-----------");
+        } else {
+            System.out.println("------------ Заявка с Id : " + id + " не найдена " + "-----------");
+        }
     }
 
     /**
@@ -154,10 +161,13 @@ public class StartUI {
     private void findName() {
         System.out.println("------------ Поиск заявки из хранилища по Name. --------------");
         String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите описание заявки :");
-        Item item = new Item(name, desc);
-        this.tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
+        Item[] result = this.tracker.findByName(name);
+        if (result.length > 0) {
+            System.out.println("------------ Заявка(и) с именем : " + name + "-----------");
+            showItems(result);
+        } else {
+            System.out.println("------------ Заявка по имени : " + name + " не найдена " + "-----------");
+        }
     }
 
     private void showMenu() {
@@ -173,13 +183,12 @@ public class StartUI {
         System.out.println("Select:");
     }
 
-    public void init2() {
-        ConsoleInput consoleInput = new ConsoleInput();
-        String name = consoleInput.ask("Kak dela?");
-
-        Tracker tracker = new Tracker();
-        tracker.add(new Item(name, "description", 123));
-        for (Item item: tracker.getAllItems()) {
+    /**
+     * вывод массива items в консоль
+     * @param items
+     */
+    private void showItems(Item[] items) {
+        for (Item item : items) {
             System.out.println(item);
         }
     }
