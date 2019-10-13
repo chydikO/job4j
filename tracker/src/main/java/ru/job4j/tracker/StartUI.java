@@ -118,7 +118,7 @@ class StartUI {
         String id = this.input.ask("Введите ID заявки :");
         String desc = this.input.ask("Введите новое описание заявки :");
         Item item = new Item(id, desc);
-        if(this.tracker.replace( id, item)) {
+        if (this.tracker.replace(id, item)) {
             System.out.println("------------ заявка с ID : " + item.getId() + " отредактирована -----------");
         } else {
             System.out.println("------------ заявка с ID : " + item.getId() + " не отредактирована -----------");

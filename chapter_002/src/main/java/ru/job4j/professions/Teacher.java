@@ -1,6 +1,6 @@
 package ru.job4j.professions;
 
-class Teacher extends Profession{
+class Teacher extends Profession {
     private Student student;
 
     public void setStudent(Student student) {

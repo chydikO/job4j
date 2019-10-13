@@ -1,6 +1,6 @@
 package ru.job4j.professions;
 
-public class Student  extends Profession{
+public class Student  extends Profession {
     private String group;
 
     public Student(String name, String profession, String group) {

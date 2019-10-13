@@ -82,7 +82,7 @@ class Tracker {
                 break;
             }
         }
-        return result;//надо написать
+        return result;
     }
 
     /**

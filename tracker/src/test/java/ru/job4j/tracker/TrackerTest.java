@@ -12,7 +12,7 @@ public class TrackerTest {
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
         long created = System.currentTimeMillis();
-        Item item = new Item("test1","testDescription",created);
+        Item item = new Item("test1", "testDescription", created);
         tracker.add(item);
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
@@ -21,17 +21,17 @@ public class TrackerTest {
     @Test
     public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1","testDescription",123L);
-        Item itemRecord1 = new Item("itemRecord1","testItemRecord#1#Description",456L);
-        Item itemRecord2 = new Item("itemRecord2","testItemRecord#2#Description",789L);
-        Item itemRecord3 = new Item("itemRecord3","testItemRecord#3#Description",1789L);
+        Item previous = new Item("test1", "testDescription", 123L);
+        Item itemRecord1 = new Item("itemRecord1", "testItemRecord#1#Description", 456L);
+        Item itemRecord2 = new Item("itemRecord2", "testItemRecord#2#Description", 789L);
+        Item itemRecord3 = new Item("itemRecord3", "testItemRecord#3#Description", 1789L);
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(previous);
         tracker.add(itemRecord1);
         tracker.add(itemRecord2);
         tracker.add(itemRecord3);
         // Создаем новую заявку.
-        Item next = new Item("test2","testDescription2",1234L);
+        Item next = new Item("test2", "testDescription2", 1234L);
         // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
         // Обновляем заявку в трекере.
@@ -46,11 +46,11 @@ public class TrackerTest {
     @Test
     public void whenDeleteRecordById() {
         Tracker tracker = new Tracker();
-        Item itemRecord0 = new Item("itemRecord0","testItemRecord#0#Description",123L);
-        Item itemRecord1 = new Item("itemRecord1","testItemRecord#1#Description",456L);
-        Item itemRecord2 = new Item("itemRecord2","testItemRecord#2#Description",789L);
-        Item itemRecord3 = new Item("itemRecord3","testItemRecord#3#Description",1789L);
-        Item itemRecord4 = new Item("itemRecord4","testItemRecord#4#Description",13789L);
+        Item itemRecord0 = new Item("itemRecord0", "testItemRecord#0#Description", 123L);
+        Item itemRecord1 = new Item("itemRecord1", "testItemRecord#1#Description", 456L);
+        Item itemRecord2 = new Item("itemRecord2", "testItemRecord#2#Description", 789L);
+        Item itemRecord3 = new Item("itemRecord3", "testItemRecord#3#Description", 1789L);
+        Item itemRecord4 = new Item("itemRecord4", "testItemRecord#4#Description", 13789L);
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(itemRecord0);
         tracker.add(itemRecord1);
@@ -71,10 +71,10 @@ public class TrackerTest {
     @Test
     public void whenFindAllRecordThenArrayOfItems() {
         Tracker tracker = new Tracker();
-        Item itemRecord0 = new Item("test1","testDescription",123L);
-        Item itemRecord1 = new Item("itemRecord1","testItemRecord#1#Description",456L);
-        Item itemRecord2 = new Item("itemRecord2","testItemRecord#2#Description",789L);
-        Item itemRecord3 = new Item("itemRecord3","testItemRecord#3#Description",1789L);
+        Item itemRecord0 = new Item("test1", "testDescription", 123L);
+        Item itemRecord1 = new Item("itemRecord1", "testItemRecord#1#Description", 456L);
+        Item itemRecord2 = new Item("itemRecord2", "testItemRecord#2#Description", 789L);
+        Item itemRecord3 = new Item("itemRecord3", "testItemRecord#3#Description", 1789L);
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(itemRecord0);
         tracker.add(itemRecord1);
@@ -83,10 +83,10 @@ public class TrackerTest {
         Item[] result = tracker.findAll();
 
         Item[] matcher = {
-                            new Item("test1","testDescription",123L),
-                            new Item("itemRecord1","testItemRecord#1#Description",456L),
-                            new Item("itemRecord2","testItemRecord#2#Description",789L),
-                            new Item("itemRecord3","testItemRecord#3#Description",1789L)
+                            new Item("test1", "testDescription", 123L),
+                            new Item("itemRecord1", "testItemRecord#1#Description", 456L),
+                            new Item("itemRecord2", "testItemRecord#2#Description", 789L),
+                            new Item("itemRecord3", "testItemRecord#3#Description", 1789L)
                             };
         matcher[0].setId(itemRecord0.getId());
         matcher[1].setId(itemRecord1.getId());
@@ -103,10 +103,10 @@ public class TrackerTest {
     public void whenFindByNameThenArrayOfItemsWithName() {
         Tracker tracker = new Tracker();
         Item itemRecordNull = new Item();
-        Item itemRecord0 = new Item("test1","testDescription",123L);
-        Item itemRecord1 = new Item("itemRecord1","testItemRecord#1#Description",456L);
-        Item itemRecord2 = new Item("itemRecord1","testItemRecord#2#Description",789L);
-        Item itemRecord3 = new Item("itemRecord3","testItemRecord#3#Description",1789L);
+        Item itemRecord0 = new Item("test1", "testDescription", 123L);
+        Item itemRecord1 = new Item("itemRecord1", "testItemRecord#1#Description", 456L);
+        Item itemRecord2 = new Item("itemRecord1", "testItemRecord#2#Description", 789L);
+        Item itemRecord3 = new Item("itemRecord3", "testItemRecord#3#Description", 1789L);
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(itemRecord0);
         tracker.add(itemRecordNull);
@@ -119,8 +119,8 @@ public class TrackerTest {
         Item[] result = tracker.findByName("itemRecord1");
 
         Item[] matcher = {
-                new Item("itemRecord1","testItemRecord#1#Description",456L),
-                new Item("itemRecord1","testItemRecord#2#Description",789L),
+                new Item("itemRecord1", "testItemRecord#1#Description", 456L),
+                new Item("itemRecord1", "testItemRecord#2#Description", 789L),
         };
         matcher[0].setId(itemRecord1.getId());
         matcher[1].setId(itemRecord2.getId());
