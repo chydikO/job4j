@@ -15,11 +15,11 @@ class BubbleSort {
         int arrayLength = array.length;
         int tmp;
 
-        for(int i=0; i < arrayLength; i++){
-            for(int j=1; j < (arrayLength-i); j++){
-                if(array[j-1] > array[j]){
-                    tmp = array[j-1];
-                    array[j-1]= array[j];
+        for (int i = 0; i < arrayLength; i++) {
+            for (int j = 1; j < (arrayLength - i); j++) {
+                if (array[j - 1] > array[j]) {
+                    tmp = array[j - 1];
+                    array[j - 1] = array[j];
                     array[j] = tmp;
                 }
             }

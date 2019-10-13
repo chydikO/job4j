@@ -60,7 +60,7 @@ class Calculate {
      */
     public static void main(String[] args) {
         Calculate calculate = new Calculate();
-        calculate.add( 10d, 15d);
+        calculate.add(10d, 15d);
         System.out.println(calculate.result);
     }
 }

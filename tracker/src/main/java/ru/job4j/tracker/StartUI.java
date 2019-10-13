@@ -1,8 +1,6 @@
 package ru.job4j.tracker;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
-public class StartUI {
+class StartUI {
 
     /**
      * Константа меню для добавления новой заявки.
@@ -104,7 +102,7 @@ public class StartUI {
      */
     private void show() {
         System.out.println("------------ Актуальные заявки --------------");
-        Item items[] = tracker.findAll();
+        Item[] items = tracker.findAll();
         showItems(items);
     }
 

@@ -12,11 +12,11 @@ package ru.job4j.tracker;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Tracker {
+class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private Item[] items = new Item[100];
+    private final Item[] items = new Item[100];
 
     /**
      * Указатель ячейки для новой заявки.
@@ -32,10 +32,9 @@ public class Tracker {
      * Метод реализаущий добавление заявки в хранилище
      * @param item новая заявка
      */
-    public Item add(Item item) {
+    public void add(Item item) {
         item.setId(this.generateId());
         this.items[this.position++] = item;
-        return item;
     }
 
     /**

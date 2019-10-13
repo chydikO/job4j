@@ -6,11 +6,11 @@ class Board {
 
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
-        for (int i = 0; i < width; i++ ) {
+        for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 // условие проверки, что писать пробел или X
                 // Выше в задании мы определили закономерность, когда нужно проставлять X
-                if ( (i+j) % 2 == 0) {
+                if ((i + j) % 2 == 0) {
                     screen.append("X");
                 } else {
                     screen.append(" ");

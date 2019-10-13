@@ -35,6 +35,6 @@ public class TriangleTest {
         Triangle triangle = new Triangle(a, b, c);
         double result = triangle.period(a.distanceTo(b), a.distanceTo(c), b.distanceTo(c));
         double expected = 31.7D;
-        assertThat( result, closeTo( expected, 0.1));
+        assertThat(result, closeTo(expected, 0.1));
     }
 }

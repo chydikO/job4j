@@ -29,14 +29,14 @@ package ru.job4j.professions;
  * 2. Хорстманн К., Корнелл Г. - Java. Библиотека профессионала. Том 1. Основы. 10-е издание. Глава 5. Страница 193.
  */
 
-public class Profession {
-    protected String name;
-    protected String profession;
+class Profession {
+    String name;
+    private String profession;
 
-    public Profession() {
+    Profession() {
     }
 
-    public Profession(String name, String profession) {
+    Profession(String name, String profession) {
         this.name = name;
         this.profession = profession;
     }

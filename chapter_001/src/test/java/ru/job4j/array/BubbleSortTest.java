@@ -14,6 +14,6 @@ public class BubbleSortTest {
         int[] result = bubbleSort.sort(input);
         int[] expected = Arrays.copyOf(input, input.length);
         Arrays.sort(expected);
-        assertThat( result, is(expected));
+        assertThat(result, is(expected));
     }
 }

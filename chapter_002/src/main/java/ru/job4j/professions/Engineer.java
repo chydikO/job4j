@@ -1,6 +1,6 @@
 package ru.job4j.professions;
 
-public class Engineer extends Profession {
+class Engineer extends Profession {
     private House house;
 
     public Engineer(String name, String profession, House house) {

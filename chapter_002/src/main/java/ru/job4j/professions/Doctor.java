@@ -1,6 +1,6 @@
 package ru.job4j.professions;
 
-public class Doctor extends Profession {
+class Doctor extends Profession {
     private Patient patient;
 
     public Doctor(String name, String profession, Patient patient) {

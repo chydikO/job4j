@@ -30,7 +30,7 @@ class Triangle {
      * @return Перимент.
      */
     public double period(double ab, double ac, double bc) {
-        return (ab + ac + bc)/2;
+        return (ab + ac + bc) / 2;
     }
 
     /**
@@ -63,7 +63,7 @@ class Triangle {
      * @return triangle exist
      */
     private boolean exist(double ab, double ac, double bc) {
-        return (ab < ac + bc)&& (bc < ab + ac) && (ac < ab + bc);
+        return (ab < ac + bc) && (bc < ab + ac) && (ac < ab + bc);
     }
 }
 

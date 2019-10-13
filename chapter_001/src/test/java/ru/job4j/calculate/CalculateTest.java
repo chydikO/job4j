@@ -42,10 +42,10 @@ public class CalculateTest {
     @Test
     public void whenMultiple2To2Then4() {
         Calculate calc = new Calculate();
-        calc.multiple( 2D, 2D);
+        calc.multiple(2D, 2D);
         double result = calc.getResult();
         double expected = 4D;
-        assertThat( result, is(expected));
+        assertThat(result, is(expected));
     }
 
     /**
@@ -54,9 +54,9 @@ public class CalculateTest {
     @Test
     public void when4subtract2Then2() {
         Calculate calc = new Calculate();
-        calc.subtract( 4D, 2D);
+        calc.subtract(4D, 2D);
         double result = calc.getResult();
         double expected = 2D;
-        assertThat( result, is(expected));
+        assertThat(result, is(expected));
     }
 }
