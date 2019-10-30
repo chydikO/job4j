@@ -22,5 +22,5 @@ public interface UserAction {
      * @return строка меню
      */
     String info();
-    public String name();
+    String name();
 }

@@ -17,12 +17,12 @@ public class StartUITest {
     }*/
 
 
-    @Test
+    /*@Test
     public void whenAddNewItem() {
         Tracker tracker = new Tracker();
         Item item = new Item( "item_1", "description item_1", 12345L);
         String[] answers = {};
-    }
+    }*/
 
     @Test
     public void whenShowAllItems() {
