@@ -16,7 +16,7 @@ public class PointTest {
     public void whenPointA510AndPointB1228ThenDistance() {
         Point pointA = new Point(5, 10);
         Point pointB = new Point(12, 28);
-        double result = pointA.distanceTo(pointB);
+        double result = pointA.distance(pointB);
         assertThat(result, closeTo(19.3132, 0.0001));
     }
 }

@@ -40,9 +40,9 @@ class Triangle {
      */
     public double area() {
         double rsl = -1; // мы устанавливаем значение -1, так как может быть что треугольника нет. Это значение говорит о том. что треугольника нет.
-        double ab = this.a.distanceTo(this.b);
-        double ac = this.a.distanceTo(this.c);
-        double bc = this.b.distanceTo(this.c);
+        double ab = this.a.distance(this.b);
+        double ac = this.a.distance(this.c);
+        double bc = this.b.distance(this.c);
         double p = this.period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
             // написать формулу для расчета площади треугольника.

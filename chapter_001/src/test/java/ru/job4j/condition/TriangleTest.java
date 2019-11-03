@@ -33,7 +33,7 @@ public class TriangleTest {
         Point b = new Point(12, 0);
         Point c = new Point(12, 27);
         Triangle triangle = new Triangle(a, b, c);
-        double result = triangle.period(a.distanceTo(b), a.distanceTo(c), b.distanceTo(c));
+        double result = triangle.period(a.distance(b), a.distance(c), b.distance(c));
         double expected = 31.7D;
         assertThat(result, closeTo(expected, 0.1));
     }
