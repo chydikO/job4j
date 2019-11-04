@@ -19,4 +19,12 @@ public class PointTest {
         double result = pointA.distance(pointB);
         assertThat(result, closeTo(19.3132, 0.0001));
     }
+
+    @Test
+    public void whenPoint3dA0510AndPointB102030ThenDistance() {
+        Point pointA = new Point(0, 5, 10);
+        Point pointB = new Point(10, 20, 30);
+        double result = pointA.distance3d(pointB);
+        assertThat(result, closeTo(26.9258, 0.0001));
+    }
 }
