@@ -9,7 +9,9 @@ package ru.job4j.tracker;
  * получение списка по имени - public Item[] findByName(String key);
  * получение заявки по id - public Item findById(String id);
  */
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class Tracker {
@@ -78,7 +80,9 @@ public class Tracker {
         boolean result = false;
         for (int i = 0; i < this.position; i++) {
             if (this.items[i] != null && this.items[i].getId().equals(id)) {
+                String currentID = this.items[i].getId();
                 this.items[i] = item;
+                this.items[i].setId(currentID);
                 result = true;
             }
         }
@@ -111,7 +115,21 @@ public class Tracker {
      * @return
      */
     public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+
+        Item[] cleanedArray = Arrays.stream(items)
+                                    .filter(obj -> (obj != null && obj.getName() != null && obj.getDecs() != null))
+                                    .toArray(Item[]::new);
+        return cleanedArray;
+
+        /*
+        2 - вариант
+        ArrayList<Item> itemsList = new ArrayList<>();
+        for (Item item: items) {
+            if (item != null && item.getName() != null && item.getDecs() != null) {
+                itemsList.add(item);
+            }
+        }
+        return itemsList.toArray(new Item[itemsList.size()]);*/
     }
 
     /**
@@ -148,11 +166,11 @@ public class Tracker {
      * Getter списка задач
      * @return
      */
-    public Item[] getAllItems() {
+    /*public Item[] getAllItems() {
         Item[] result = new Item[this.position];
         for (int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
         }
         return result;
-    }
+    }*/
 }

@@ -50,16 +50,19 @@ public class TrackerTest {
         Item itemRecord2 = new Item("itemRecord2","testItemRecord#2#Description",789L);
         Item itemRecord3 = new Item("itemRecord3","testItemRecord#3#Description",1789L);
         Item itemRecord4 = new Item("itemRecord4","testItemRecord#4#Description",13789L);
+        Item itemRecord5 = new Item();
+
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(itemRecord0);
         tracker.add(itemRecord1);
         tracker.add(itemRecord2);
         tracker.add(itemRecord3);
+        tracker.add(itemRecord5);
         tracker.add(itemRecord4);
 
         //удаляем запись с индексом 2
         tracker.delete(itemRecord2.getId());
-        Item[] items = tracker.getAllItems();
+        Item[] items = tracker.findAll();
 
         assertThat(items[2].getName(), is("itemRecord3"));
     }

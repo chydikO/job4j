@@ -16,18 +16,17 @@ public class Shop {
             System.out.println("index not valid");
             return products;
         }
-
-        Product[] result = new Product[products.length - 1];
-        System.arraycopy(products, 0, result, 0, index );
-        System.arraycopy(products, index+1, result, index, products.length - index-1);
-        return result;
+        int numElements = products.length - ( index + 1 ) ;
+        System.arraycopy( products, index + 1, products, index, numElements);
+        return products;
     }
+
     public static void main(String[] args) {
         Product products[] = new Product[5];
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
-        products[4] = new Product("Egg44", 999);
+        //products[4] = new Product("Egg44", 999);
 
         for (int i = 0; i < products.length; i++) {
             Product product = products[i];
