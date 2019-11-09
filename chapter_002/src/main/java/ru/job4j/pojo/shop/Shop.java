@@ -17,7 +17,9 @@ public class Shop {
             return products;
         }
         int numElements = products.length - ( index + 1 ) ;
-        System.arraycopy( products, index + 1, products, index, numElements);
+        if (numElements > 0) {
+            System.arraycopy( products, index + 1, products, index, numElements);
+        }
         products[products.length - 1] = null;
         return products;
     }
