@@ -18,6 +18,7 @@ public class Shop {
         }
         int numElements = products.length - ( index + 1 ) ;
         System.arraycopy( products, index + 1, products, index, numElements);
+        products[products.length - 1] = null;
         return products;
     }
 
@@ -26,7 +27,7 @@ public class Shop {
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
-        //products[4] = new Product("Egg44", 999);
+        products[4] = new Product("Egg44", 999);
 
         for (int i = 0; i < products.length; i++) {
             Product product = products[i];
