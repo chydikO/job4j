@@ -93,14 +93,17 @@ public class Tracker {
      * @param id
      * @return
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         for (int i = 0; i < this.position; i++) {
             if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 System.arraycopy(this.items, i + 1, this.items, i, this.position - i);
                 this.position--;
+                result = true;
                 break;
             }
         }
+        return result;
     }
 
     /**
