@@ -28,7 +28,7 @@ public class StartUI {
         }
     }
 
-    private void showMenu() {
+    private static void showMenu() {
         System.out.println("Menu.");
         // добавить остальные пункты меню.
         System.out.println("0. Add new Item");
@@ -56,7 +56,7 @@ public class StartUI {
     /**
      * Метод реализует показ всех заявок.
      */
-    private void show() {
+    private static void show() {
         System.out.println("------------ Actual applications --------------");
         Item items[] = tracker.findAll();
         showItems(items);
