@@ -1,16 +1,15 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
-
 public class StartUI {
-    private static final Scanner scanner = new Scanner(System.in);
+    //private static final Scanner scanner = new Scanner(System.in);
+    private static Input input;
     private static Tracker tracker;
 
-    public void init(Scanner scanner, Tracker tracker) {
+    public void init(Input consoleInput, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = Integer.valueOf(scanner.nextLine());
+            int select = consoleInput.askInt("SELECT-> ");
             if (MenuItems.ADD.getId() == select) {
                 createItem();
             } else if (MenuItems.SHOW.getId() == select) {
@@ -39,7 +38,6 @@ public class StartUI {
         System.out.println("4. Find item by Id");
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
-        System.out.println("Select:");
     }
 
     /**
@@ -47,10 +45,9 @@ public class StartUI {
      */
     private static void createItem() {
         System.out.println("=== Create a new Item ====");
-        System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-        System.out.println("Enter application description :");
-        String desc = scanner.nextLine();
+
+        String name = input.askStr("Enter name: ");
+        String desc = input.askStr("Enter application description :");
         Item item = new Item(name, desc);
         tracker.add(item);
         System.out.println("------------ New request getId : " + item.getId() + "-----------");
@@ -72,10 +69,8 @@ public class StartUI {
         //TODO необходимо найти заявку по имени или id, показать ее, если это она, редактировать - добавить новую,
         // текущюю удалить. А если заявок с именем много, какую редактировать?
         System.out.println("=== Application editing ===");
-        System.out.println("Input ID request : ");
-        String id = scanner.nextLine();
-        System.out.println("Enter a new application description :");
-        String desc = scanner.nextLine();
+        String id = input.askStr("Input ID request : ");
+        String desc = input.askStr("Enter a new application description :");
         Item item = new Item(id, desc);
         if(tracker.replace( id, item)) {
             System.out.println("------------ request with ID : " + item.getId() + " editing -----------");
@@ -89,8 +84,7 @@ public class StartUI {
      */
     private static void deleteItem() {
         System.out.println("=== Delete application ===");
-        System.out.println("Введите ID заявки :");
-        String id = scanner.nextLine();
+        String id = input.askStr("Введите ID заявки :");
         //TODO найти по id заявку , вывести ее на экран, спросить у пользователя - удалить?
         if (tracker.delete(id)) {
             System.out.println("--- application with Id : " + id + " deleted ---");
@@ -104,8 +98,7 @@ public class StartUI {
      */
     private static void findID() {
         System.out.println("=== Search application by ID ===");
-        System.out.println("Введите ID заявки :");
-        String id = scanner.nextLine();
+        String id = input.askStr("Введите ID заявки :");
         Item result = tracker.findById(id);
         if (result != null) {
             System.out.println("---request with ID : " + result.getId() + " found " + "---");
@@ -119,8 +112,7 @@ public class StartUI {
      */
     private static void findName() {
         System.out.println("------------ Поиск заявки из хранилища по Name. --------------");
-        System.out.println("Введите имя заявки :");
-        String name = scanner.nextLine();
+        String name = input.askStr("Введите имя заявки :");
         Item[] result = tracker.findByName(name);
         if (result.length > 0) {
             System.out.println("--- Application (s) with the name : " + name + "---");
@@ -141,8 +133,8 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-
+        input = new ConsoleInput();
         tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI().init(input, tracker);
     }
 }
