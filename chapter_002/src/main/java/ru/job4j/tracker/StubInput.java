@@ -7,14 +7,15 @@ public class StubInput implements Input {
     public StubInput(String[] answers) {
         this.answers = answers;
     }
-    
+
     @Override
     public String askStr(String question) {
-        return null;
+        String result = answers[position++];;
+        return result;
     }
 
     @Override
     public int askInt(String question) {
-        return 0;
+        return Integer.valueOf(askStr(question));
     }
 }

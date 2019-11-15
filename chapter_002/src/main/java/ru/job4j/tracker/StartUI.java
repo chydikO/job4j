@@ -5,11 +5,11 @@ public class StartUI {
     private static Input input;
     private static Tracker tracker;
 
-    public static void init(Input consoleInput, Tracker tracker) {
+    public static void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             showMenu();
-            int select = consoleInput.askInt("SELECT-> ");
+            int select = input.askInt("");
             if (MenuItems.ADD.getId() == select) {
                 createItem();
             } else if (MenuItems.SHOW.getId() == select) {
