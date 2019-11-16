@@ -1,11 +1,15 @@
 package ru.job4j.tracker;
 
 public class StartUI {
-    //private static final Scanner scanner = new Scanner(System.in);
-    private static Input input;
-    private static Tracker tracker;
+    private final Input input;
+    private final Tracker tracker;
 
-    public static void init(Input input, Tracker tracker) {
+    public StartUI(Input input, Tracker tracker) {
+        this.input = input;
+        this.tracker = tracker;
+    }
+
+    public void init() {
         boolean run = true;
         while (run) {
             showMenu();
@@ -43,7 +47,7 @@ public class StartUI {
     /**
      * Метод реализует добавленяи новый заявки в хранилище.
      */
-    private static void createItem() {
+    private void createItem() {
         System.out.println("=== Create a new Item ====");
 
         String name = input.askStr("Enter name: ");
@@ -56,7 +60,7 @@ public class StartUI {
     /**
      * Метод реализует показ всех заявок.
      */
-    private static void show() {
+    private void show() {
         System.out.println("------------ Actual applications --------------");
         Item items[] = tracker.findAll();
         showItems(items);
@@ -65,7 +69,7 @@ public class StartUI {
     /**
      * Метод реализует редактирование заявки в хранилище.
      */
-    private static void editItem() {
+    private void editItem() {
         //TODO необходимо найти заявку по имени или id, показать ее, если это она, редактировать - добавить новую,
         // текущюю удалить. А если заявок с именем много, какую редактировать?
         System.out.println("=== Application editing ===");
@@ -82,7 +86,7 @@ public class StartUI {
     /**
      * Метод реализует удаление заявки из хранилища.
      */
-    private static void deleteItem() {
+    private void deleteItem() {
         System.out.println("=== Delete application ===");
         String id = input.askStr("Введите ID заявки :");
         //TODO найти по id заявку , вывести ее на экран, спросить у пользователя - удалить?
@@ -96,7 +100,7 @@ public class StartUI {
     /**
      * Метод реализует поиск заявки из хранилища по ID.
      */
-    private static void findID() {
+    private void findID() {
         System.out.println("=== Search application by ID ===");
         String id = input.askStr("Введите ID заявки :");
         Item result = tracker.findById(id);
@@ -110,7 +114,7 @@ public class StartUI {
     /**
      * Метод реализует поиск заявки из хранилища по Name.
      */
-    private static void findName() {
+    private void findName() {
         System.out.println("------------ Поиск заявки из хранилища по Name. --------------");
         String name = input.askStr("Введите имя заявки :");
         Item[] result = tracker.findByName(name);
@@ -133,8 +137,6 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        input = new ConsoleInput();
-        tracker = new Tracker();
-        StartUI.init(input, tracker);
+        new StartUI(new ConsoleInput(), new Tracker()).init();
     }
 }

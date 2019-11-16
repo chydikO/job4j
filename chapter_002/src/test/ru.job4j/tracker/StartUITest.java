@@ -5,16 +5,16 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
-    private static Input input;
-    private static Tracker tracker;
+    private Input input;
+    private Tracker tracker;
 
 
     @Test
     public void whenAddItem() {
-        String[] answers = {"0", "Fix PC","desc Fix PC"};
+        String[] answers = {"0", "Fix PC","desc Fix PC", "6"};
         input = new StubInput(answers);
         tracker = new Tracker();
-        StartUI.init(input, tracker);
+        new StartUI(input, tracker).init();
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC", "desc Fix PC");
         assertThat(created.getName(), is(expected.getName()));
