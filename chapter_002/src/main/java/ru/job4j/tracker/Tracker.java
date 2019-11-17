@@ -86,7 +86,7 @@ public class Tracker {
                 result = true;
             }
         }
-        return result;//надо написать
+        return result;
     }
 
     /**
@@ -161,16 +161,4 @@ public class Tracker {
             System.out.println(item);
         }
     }
-
-    /**
-     * Getter списка задач
-     * @return
-     */
-    /*public Item[] getAllItems() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
-    }*/
 }

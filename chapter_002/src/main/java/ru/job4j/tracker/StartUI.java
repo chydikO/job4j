@@ -136,6 +136,21 @@ public class StartUI {
         }
     }
 
+    public static void replaceItem(Input input, Tracker tracker) {
+        System.out.println(" === Update item ====");
+        String id = input.askStr("Enter id:");
+        String name = input.askStr("Enter a new name of item: ");
+        Item itemReplace = tracker.findById(id);
+        if (itemReplace != null) {
+            Item item = new Item(name, itemReplace.getDecs());
+            item.setId(id);
+            tracker.replace(id, item);
+            System.out.println("--- Application (s) with the name : " + name + " *replaced ---");
+        } else {
+            System.out.println("--- Application (s) with the name : " + name + "  not found " + "---");
+        }
+    }
+
     public static void main(String[] args) {
         new StartUI(new ConsoleInput(), new Tracker()).init();
     }
