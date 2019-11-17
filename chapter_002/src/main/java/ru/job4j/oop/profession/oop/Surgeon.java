@@ -10,6 +10,6 @@ public class Surgeon extends Doctor {
     }
 
     public void doSurgery(Patient patient) {
-        System.out.format("Surgeon $s do Surgery patient $s",  this.getName(),patient.getName());
+        System.out.format("Surgeon $s do Surgery patient $s",  this.getName(), patient.getName());
     }
 }

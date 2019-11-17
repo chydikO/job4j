@@ -62,7 +62,7 @@ public class StartUI {
      */
     private void show() {
         System.out.println("------------ Actual applications --------------");
-        Item items[] = tracker.findAll();
+        Item[] items = tracker.findAll();
         showItems(items);
     }
 
@@ -76,7 +76,7 @@ public class StartUI {
         String id = input.askStr("Input ID request : ");
         String desc = input.askStr("Enter a new application description :");
         Item item = new Item(id, desc);
-        if(tracker.replace( id, item)) {
+        if (tracker.replace(id, item)) {
             System.out.println("------------ request with ID : " + item.getId() + " editing -----------");
         } else {
             System.out.println("------------ request with ID : " + item.getId() + " NOT editing -----------");

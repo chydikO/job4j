@@ -16,16 +16,16 @@ public class Shop {
             System.out.println("index not valid");
             return products;
         }
-        int numElements = products.length - ( index + 1 ) ;
+        int numElements = products.length - (index + 1);
         if (numElements > 0) {
-            System.arraycopy( products, index + 1, products, index, numElements);
+            System.arraycopy(products, index + 1, products, index, numElements);
         }
         products[products.length - 1] = null;
         return products;
     }
 
     public static void main(String[] args) {
-        Product products[] = new Product[5];
+        Product[] products = new Product[5];
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
@@ -73,8 +73,8 @@ public class Shop {
         }
 
         System.out.println("---------------");
-        System.out.println("заменить ячейку с индексом index на нулевую ссылку. а потом сместить все элементы на одну позицию\n" +
-                "     * влево, чтобы в массиве не было дырки.");
+        System.out.println("заменить ячейку с индексом index на нулевую ссылку. а потом сместить все элементы на одну позицию\n"
+                + "     * влево, чтобы в массиве не было дырки.");
         products = delete(products, 0);
         for (int i = 0; i < products.length; i++) {
             Product product = products[i];

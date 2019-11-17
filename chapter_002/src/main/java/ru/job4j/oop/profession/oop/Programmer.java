@@ -10,7 +10,7 @@ public class Programmer extends Engineer {
     }
 
     public void writeCode(Software software) {
-        System.out.format("Programmer %s write code %s", this.getName(), software.getName() );
+        System.out.format("Programmer %s write code %s", this.getName(), software.getName());
     }
 }
 

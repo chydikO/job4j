@@ -21,16 +21,6 @@ public class StartUITest {
         assertThat(created.getName(), is(expected.getName()));
     }
 
-    /**
-     * Порядок действий.
-     * 1. Создаем объект tracker.
-     * 2. Создаем объект item.
-     * 3. Добавляем item в tracker. После этой операции у нас есть id.
-     * 4. Достаем item.id и создаем массив с ответами пользователя.
-     * 5. Вызываем тестируемый метод replaceItem. Это действие изменит состояние объекта tracker.
-     * 6. Ищем по item.id замененный item в объекте tracker.
-     * 7. Сравниваем имя найденной заявки с ожидаемой.
-     */
     @Test
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
@@ -58,14 +48,12 @@ public class StartUITest {
         tracker.add(itemRecord2);
 
         Item[] items = tracker.findAll();
-
         assertThat(items[0].getName(), Matchers.is(item.getName()));
 
         String[] answers = { "3", item.getId(), "6"};
         new StartUI(new StubInput(answers), tracker).init();
 
         items = tracker.findAll();
-
         assertThat(items[0].getName(), Matchers.is(itemRecord0.getName()));
 
     }

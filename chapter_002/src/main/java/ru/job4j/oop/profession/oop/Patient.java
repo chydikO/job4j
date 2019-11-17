@@ -4,7 +4,7 @@ public class Patient extends Profession {
     private String diagnose;
 
     public Patient(String name, String surname, String education, String birthday, String diagnose) {
-        super( name,  surname,  education, birthday);
+        super(name, surname, education, birthday);
         this.diagnose = diagnose;
     }
 
