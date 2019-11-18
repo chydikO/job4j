@@ -31,10 +31,10 @@ public class PaintTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("++++")
-                                .append("+     +")
-                                .append("+     +")
-                                .append("++++")
+                                .append("++++\n")
+                                .append("+     +\n")
+                                .append("+     +\n")
+                                .append("++++\n")
                                 .append(System.lineSeparator())
                                 .toString()
                 )
