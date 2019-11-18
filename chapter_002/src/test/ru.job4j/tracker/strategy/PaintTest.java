@@ -65,12 +65,15 @@ public class PaintTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                        .append("  +  ")
-                        .append(" + + ")
-                        .append("+   +")
-                        .append("+++++")
-                        .append(System.lineSeparator())
-                        .toString()
+                                .append("  +  ")
+                                .append(System.lineSeparator())
+                                .append(" + + ")
+                                .append(System.lineSeparator())
+                                .append("+   +")
+                                .append(System.lineSeparator())
+                                .append("+++++")
+                                .append(System.lineSeparator())
+                                .toString()
                 )
         );
         // возвращаем обратно стандартный вывод в консоль.
