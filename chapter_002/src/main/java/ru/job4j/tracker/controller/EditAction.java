@@ -7,7 +7,7 @@ import ru.job4j.tracker.Tracker;
 public class EditAction implements UserAction {
     @Override
     public String name() {
-        return "=== Application editing ===";
+        return "=== Edit item ===";
     }
 
     @Override

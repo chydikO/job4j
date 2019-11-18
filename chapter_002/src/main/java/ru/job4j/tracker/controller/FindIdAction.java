@@ -7,7 +7,7 @@ import ru.job4j.tracker.Tracker;
 public class FindIdAction implements UserAction {
     @Override
     public String name() {
-        return "=== Search application by ID ===";
+        return "=== Find item by Id ===";
     }
 
     @Override
