@@ -80,11 +80,6 @@ private static final UserAction[] userAction = {
     }
 
     @Test
-    public void whenShoAll() {
-
-    }
-
-    @Test
     public void whenFindId() {
         Tracker tracker = new Tracker();
 
