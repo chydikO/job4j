@@ -1,8 +1,13 @@
 package ru.job4j.tracker;
 
 import org.hamcrest.Matchers;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.tracker.controller.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -18,6 +23,45 @@ private static final UserAction[] userAction = {
         new FindNameAction(),
         new ExitAction()
 };
+
+    // поле содержит дефолтный вывод в консоль.
+    private final PrintStream stdout = System.out;
+    // буфер для результата.
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private static final String LS = System.lineSeparator();
+
+    @Before
+    public void loadOutput() {
+        System.out.println("execute before method");
+        System.setOut(new PrintStream(this.out));
+    }
+
+    @After
+    public void backOutput() {
+        System.setOut(this.stdout);
+        System.out.println("execute after method");
+    }
+
+    private final StringBuilder menu = new StringBuilder()
+            .append("0. === Add new Item ====")
+            .append(LS)
+            .append("1. === Show all items ===")
+            .append(LS)
+            .append("2. === Edit item ===")
+            .append(LS)
+            .append("3. === Update item ====")
+            .append(LS)
+            .append("4. === Delete item ===")
+            .append(LS)
+            .append("5. === Find item by Id ===")
+            .append(LS)
+            .append("6. === Find items by name ===")
+            .append(LS)
+            .append("7. === Exit Program ===")
+            .append(LS)
+            .append("Select:")
+            .append(LS);
+
     @Test
     public void whenExit() {
         StubInput input = new StubInput(
@@ -37,7 +81,15 @@ private static final UserAction[] userAction = {
         new StartUI().init(input, tracker, userAction);
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC", "desc Fix PC");
-        assertThat(created.getName(), is(expected.getName()));
+        //assertThat(created.getName(), is(expected.getName()));
+        assertThat(
+                    new String(out.toByteArray()),
+                    is(
+                        new StringBuilder()
+                                .append(menu)
+                                .append("Enter name: ")
+                    ));
+
     }
 
     @Test
