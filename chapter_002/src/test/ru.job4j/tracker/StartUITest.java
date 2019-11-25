@@ -67,7 +67,47 @@ private static final UserAction[] userAction = {
     }
 
     @Test
+    public void whenCheckOutput() {
+
+        // call your methods.
+
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("")
+                .add("")
+                .toString();
+        assertThat(new String(out.toByteArray()), is(expect));
+    }
+
+    /**
+     * Menu.
+     * 0. === Add new Item ====
+     * 1. === Show all items ===
+     * 2. === Edit item ===
+     * 3. === Update item ====
+     * 4. === Delete item ===
+     * 5. === Find item by Id ===
+     * 6. === Find items by name ===
+     * 7. === Exit Program ===
+     * Select: 0
+     * Enter name: fghfghgfh
+     * Enter application description : fghgfhfgfhdgfgh
+     * Menu.
+     * 0. === Add new Item ====
+     * 1. === Show all items ===
+     * 2. === Edit item ===
+     * 3. === Update item ====
+     * 4. === Delete item ===
+     * 5. === Find item by Id ===
+     * 6. === Find items by name ===
+     * 7. === Exit Program ===
+     * Select: 7
+     */
+    @Test
     public void whenCreateNewItem() {
+        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("1")
+                .add("2")
+                .toString();
         String[] answers = {"0", "Fix PC","desc Fix PC", "7"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
@@ -76,14 +116,15 @@ private static final UserAction[] userAction = {
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC", "desc Fix PC");
         //assertThat(created.getName(), is(expected.getName()));
+
         assertThat(
                     new String(out.toByteArray()),
                     is(
                         new StringBuilder()
-                                .append(menu)
-                                .append("Enter name: " + expected.getName())
-                                .append("Enter application description :" + expected.getDecs())
-                                .append("------------ New request getId : " + expected.getId() + "-----------")
+                                .append(menu.toString())
+                                .append("Enter name: " + expected.getName() + LS)
+                                .append("Enter application description : " + expected.getDecs() + LS)
+                                .append(menu.toString())
                     ));
 
     }
@@ -102,6 +143,8 @@ private static final UserAction[] userAction = {
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("replaced item"));
     }
+
+
 
     @Test
     public void whenDeleteItem() {
