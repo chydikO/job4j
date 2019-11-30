@@ -19,7 +19,7 @@ public class ReplaceAction implements UserAction {
             Item item = new Item(name, itemReplace.getDecs());
             item.setId(id);
             tracker.replace(id, item);
-            System.out.println("--- Application (s) with the name : " + name + " *replaced ---");
+            System.out.println("--- Application (s) with the name : " + name + " replaced ---");
         } else {
             System.out.println("--- Application (s) with the name : " + name + "  not found " + "---");
         }
