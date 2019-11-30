@@ -31,14 +31,14 @@ private static final UserAction[] userAction = {
     // буфер для результата.
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private static final String LS = System.lineSeparator();
-    private static StringBuilder menu = new StringBuilder();
-    //private static StringJoiner menu = new StringJoiner(LS);
+    //private static StringBuilder menu = new StringBuilder();
+    private static StringJoiner menu = new StringJoiner(LS);
 
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
         System.setOut(new PrintStream(this.out));
-        menu.append("Menu." + LS);
+ /*       menu.append("Menu." + LS);
         menu.append("0. === Add new Item ====" + LS);
         menu.append("1. === Show all items ===" + LS);
         menu.append("2. === Edit item ===" + LS);
@@ -48,9 +48,9 @@ private static final UserAction[] userAction = {
         menu.append("6. === Find items by name ===" + LS);
         menu.append("7. === Exit Program ===" + LS);
         //menu.append("Select:");
+*/
 
 
-/*
         menu.add("Menu.");
         menu.add("0. === Add new Item ====");
         menu.add("1. === Show all items ===");
@@ -60,8 +60,8 @@ private static final UserAction[] userAction = {
         menu.add("5. === Find item by Id ===");
         menu.add("6. === Find items by name ===");
         menu.add("7. === Exit Program ===");
-        menu.add("Select:");
-*/
+        //menu.add("Select:");
+
     }
 
     @After
@@ -93,7 +93,7 @@ private static final UserAction[] userAction = {
     }
 
     /**
-     * Menu.
+     * <Menu.
      * 0. === Add new Item ====
      * 1. === Show all items ===
      * 2. === Edit item ===
@@ -113,6 +113,7 @@ private static final UserAction[] userAction = {
      * 6. === Find items by name ===
      * 7. === Exit Program ===
      * >
+     *
      * but: was "
      * Menu.\n
      * 0. === Add new Item ====\n
@@ -149,9 +150,10 @@ private static final UserAction[] userAction = {
                     out.toString(),
                     is(
                         new StringBuilder()
-                                .append(menu.toString())
+                                .append(menu.toString() + LS)
                                 .append("------------ New request with name : " + expected.getName() + " is open -----------" + LS)
-                                .append(menu.toString())
+                                .append(menu.toString() + LS)
+                                .toString()
                     ));
 
     }
