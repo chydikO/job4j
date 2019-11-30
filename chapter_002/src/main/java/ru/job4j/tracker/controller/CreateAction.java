@@ -16,7 +16,7 @@ public class CreateAction implements UserAction {
         String desc = input.askStr("Enter application description :");
         Item item = new Item(name, desc);
         tracker.add(item);
-        System.out.println("------------ New request getId : " + item.getId() + "-----------");
+        System.out.println("------------ New request with name : " + item.getName() + " is open -----------");
         return true;
     }
 }

@@ -31,13 +31,26 @@ private static final UserAction[] userAction = {
     // буфер для результата.
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private static final String LS = System.lineSeparator();
-    private static StringJoiner menu = new StringJoiner(LS);
+    private static StringBuilder menu = new StringBuilder();
+    //private static StringJoiner menu = new StringJoiner(LS);
 
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
         System.setOut(new PrintStream(this.out));
+        menu.append("Menu." + LS);
+        menu.append("0. === Add new Item ====" + LS);
+        menu.append("1. === Show all items ===" + LS);
+        menu.append("2. === Edit item ===" + LS);
+        menu.append("3. === Update item ====" + LS);
+        menu.append("4. === Delete item ===" + LS);
+        menu.append("5. === Find item by Id ===" + LS);
+        menu.append("6. === Find items by name ===" + LS);
+        menu.append("7. === Exit Program ===" + LS);
+        //menu.append("Select:");
 
+
+/*
         menu.add("Menu.");
         menu.add("0. === Add new Item ====");
         menu.add("1. === Show all items ===");
@@ -48,6 +61,7 @@ private static final UserAction[] userAction = {
         menu.add("6. === Find items by name ===");
         menu.add("7. === Exit Program ===");
         menu.add("Select:");
+*/
     }
 
     @After
@@ -88,9 +102,7 @@ private static final UserAction[] userAction = {
      * 5. === Find item by Id ===
      * 6. === Find items by name ===
      * 7. === Exit Program ===
-     * Select: 0
-     * Enter name: fghfghgfh
-     * Enter application description : fghgfhfgfhdgfgh
+     * ------------ New request with name : Fix PC is open -----------
      * Menu.
      * 0. === Add new Item ====
      * 1. === Show all items ===
@@ -100,30 +112,45 @@ private static final UserAction[] userAction = {
      * 5. === Find item by Id ===
      * 6. === Find items by name ===
      * 7. === Exit Program ===
-     * Select: 7
+     * >
+     * but: was "
+     * Menu.\n
+     * 0. === Add new Item ====\n
+     * 1. === Show all items ===\n
+     * 2. === Edit item ===\n
+     * 3. === Update item ====\n
+     * 4. === Delete item ===\n
+     * 5. === Find item by Id ===\n
+     * 6. === Find items by name ===\n
+     * 7. === Exit Program ===\n
+     * ------------ New request with name : Fix PC is open -----------\n
+     * Menu.\n
+     * 0. === Add new Item ====\n
+     * 1. === Show all items ===\n
+     * 2. === Edit item ===\n
+     * 3. === Update item ====\n
+     * 4. === Delete item ===\n
+     * 5. === Find item by Id ===\n
+     * 6. === Find items by name ===\n
+     * 7. === Exit Program ===\n
+     * " <Click to see difference>
+     *
      */
     @Test
     public void whenCreateNewItem() {
-        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("1")
-                .add("2")
-                .toString();
         String[] answers = {"0", "Fix PC","desc Fix PC", "7"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
 
         new StartUI().init(input, tracker, userAction);
-        Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC", "desc Fix PC");
-        //assertThat(created.getName(), is(expected.getName()));
 
         assertThat(
-                    new String(out.toByteArray()),
+                    out.toString(),
                     is(
                         new StringBuilder()
                                 .append(menu.toString())
-                                .append("Enter name: " + expected.getName() + LS)
-                                .append("Enter application description : " + expected.getDecs() + LS)
+                                .append("------------ New request with name : " + expected.getName() + " is open -----------" + LS)
                                 .append(menu.toString())
                     ));
 
