@@ -47,8 +47,6 @@ private static final UserAction[] userAction = {
         menu.add("5. === Find item by Id ===");
         menu.add("6. === Find items by name ===");
         menu.add("7. === Exit Program ===");
-        //menu.add("Select:");
-
     }
 
     @After
@@ -112,7 +110,6 @@ private static final UserAction[] userAction = {
         };
         new StartUI().init(new StubInput(answers), tracker, userAction);
         Item replaced = tracker.findById(item.getId());
-        //assertThat(replaced.getName(), is("replaced item"));
         assertThat(
                 out.toString(),
                 is(
@@ -122,7 +119,6 @@ private static final UserAction[] userAction = {
                                 .append(menu.toString() + LS)
                                 .toString()
                 ));
-
     }
 
 
@@ -147,8 +143,15 @@ private static final UserAction[] userAction = {
         new StartUI().init(new StubInput(answers), tracker, userAction);
 
         items = tracker.findAll();
-        assertThat(items[0].getName(), Matchers.is(itemRecord0.getName()));
-
+        assertThat(
+                out.toString(),
+                is(
+                        new StringBuilder()
+                                .append(menu.toString() + LS)
+                                .append("--- application with Id : " + item.getId() + " deleted ---" + LS)
+                                .append(menu.toString() + LS)
+                                .toString()
+                ));
     }
 
     @Test
@@ -171,14 +174,22 @@ private static final UserAction[] userAction = {
         };
         new StartUI().init(new StubInput(answers), tracker, userAction);
         Item find = tracker.findById(item.getId());
-        assertThat(find.getId(), is(item.getId()));
+        assertThat(
+                out.toString(),
+                is(
+                        new StringBuilder()
+                                .append(menu.toString() + LS)
+                                .append("---request with ID : " + item.getId() + " found " + "---" + LS)
+                                .append(menu.toString() + LS)
+                                .toString()
+                ));
     }
 
     @Test
     public void whenFindName() {
         Tracker tracker = new Tracker();
 
-        Item item = new Item("new item for delete", "new item desc");
+        Item item = new Item("new item for delete", "new item desc", 123L);
         Item itemRecord0 = new Item("itemRecord0","testItemRecord#0#Description",123L);
         Item itemRecord1 = new Item("itemRecord1","testItemRecord#1#Description",456L);
         Item itemRecord2 = new Item("itemRecord2","testItemRecord#2#Description",789L);
@@ -193,8 +204,22 @@ private static final UserAction[] userAction = {
                 "7"
         };
         new StartUI().init(new StubInput(answers), tracker, userAction);
+        Item[] items = tracker.getItems();
+        item.setId(items[0].getId());
+
+
         Item find = tracker.findById(item.getId());
-        assertThat(find.getName(), is(item.getName()));
+        assertThat(
+                out.toString(),
+                is(
+                        new StringBuilder()
+                                .append(menu.toString() + LS)
+                                .append("--- Application (s) with the name : " + item.getName() + "---" + LS)
+                                .append("Item id- " + item.getId() + " Name- " + item.getName() + " Desc- " + item.getDecs()
+                                        + " time- " + item.getTime() + LS)
+                                .append(menu.toString() + LS)
+                                .toString()
+                ));
     }
 
 }

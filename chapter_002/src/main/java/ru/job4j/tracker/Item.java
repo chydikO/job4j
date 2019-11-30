@@ -78,6 +78,6 @@ public class Item {
     @Override
     public String toString() {
         return ("Item id- " + this.getId() + " Name- " + this.getName() + " Desc- " + this.getDecs()
-                + " time- " + this.time + " HASH: " + this.hashCode());
+                + " time- " + this.time);
     }
 }
