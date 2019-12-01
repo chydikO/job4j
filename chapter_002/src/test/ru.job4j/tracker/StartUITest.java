@@ -29,15 +29,21 @@ private static final UserAction[] userAction = {
     // поле содержит дефолтный вывод в консоль.
     private final PrintStream stdout = System.out;
     // буфер для результата.
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private ByteArrayOutputStream out = new ByteArrayOutputStream();
     private static final String LS = System.lineSeparator();
-    private static StringJoiner menu = new StringJoiner(LS);
+    private static StringJoiner menu;
 
     @Before
     public void loadOutput() {
+        out.reset();
         System.out.println("execute before method");
         System.setOut(new PrintStream(this.out));
 
+        initMenuItem();
+    }
+
+    private void initMenuItem() {
+        menu = new StringJoiner(LS);
         menu.add("Menu.");
         menu.add("0. === Add new Item ====");
         menu.add("1. === Show all items ===");
@@ -63,18 +69,6 @@ private static final UserAction[] userAction = {
         StubAction action = new StubAction();
         new StartUI().init(input, new Tracker(), new UserAction[] { action});
         assertThat(action.isCall(), is(true));
-    }
-
-    @Test
-    public void whenCheckOutput() {
-
-        // call your methods.
-
-        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("")
-                .add("")
-                .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
     }
 
     @Test
@@ -125,6 +119,7 @@ private static final UserAction[] userAction = {
 
     @Test
     public void whenDeleteItem() {
+
         Tracker tracker = new Tracker();
         Item item = new Item("new item for delete", "new item desc");
         Item itemRecord0 = new Item("itemRecord0","testItemRecord#0#Description",123L);
@@ -174,6 +169,7 @@ private static final UserAction[] userAction = {
         };
         new StartUI().init(new StubInput(answers), tracker, userAction);
         Item find = tracker.findById(item.getId());
+
         assertThat(
                 out.toString(),
                 is(

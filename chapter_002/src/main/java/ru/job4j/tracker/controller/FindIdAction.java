@@ -15,7 +15,7 @@ public class FindIdAction implements UserAction {
         String id = input.askStr("Введите ID заявки :");
         Item result = tracker.findById(id);
         if (result != null) {
-            System.out.println("---request with ID : " + result.getName() + " found " + "---");
+            System.out.println("---request with ID : " + result.getId() + " found " + "---");
         } else {
             System.out.println("---request with ID : " + id + " not found " + "---");
         }
