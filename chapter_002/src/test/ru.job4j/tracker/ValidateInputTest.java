@@ -43,17 +43,4 @@ public class ValidateInputTest {
                 is(String.format("Please enter validate data again.%n"))
         );
     }
-
-    @Test
-    public void whenInvalidInputNumberMenu() {
-
-        ValidateInput input = new ValidateInput(
-                new StubInput(new String[] {"10", "0"})
-        );
-        input.askInt("2", 1);
-        assertThat(
-                out.toString(),
-                is(String.format("Please select key from menu.\n"))
-        );
-    }
 }
