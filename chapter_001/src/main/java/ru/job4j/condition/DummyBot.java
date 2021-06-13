@@ -13,9 +13,9 @@ class DummyBot {
      * @param question Вопрос от клиента.
      * @return Ответ.
      */
-    public String answer(String question) {
+    public static String answer(String question) {
         String rsl = "Это ставит меня в тупик. Спросите другой вопрос.";
-        if ("Привет, Бот.".equals(question)) {
+        if ("Привет, Бот".equals(question)) {
             // заменить ... на правильный ответ rsl = "ответ по заданию".
             rsl = "Привет, умник.";
         } else if ("Пока.".equals(question)) { // заменить ... на проверку, что этот вопрос известен боту и он знает как на него ответить.
@@ -23,5 +23,12 @@ class DummyBot {
             rsl = "До скорой встречи.";
         }
         return rsl;
+    }
+
+    public static void main(String[] args) {
+        String rsl = DummyBot.answer("Привет, Бот");
+        System.out.println(rsl);
+        rsl = DummyBot.answer("Пока.");
+        System.out.println(rsl);
     }
 }
